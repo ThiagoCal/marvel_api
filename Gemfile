@@ -24,11 +24,15 @@ gem 'redis', '~> 4.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'searchkick', '~> 4.0'
+gem 'elasticsearch', "< 7.14"
 gem 'cloudinary', '~> 1.16.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+
+gem 'open-uri'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'

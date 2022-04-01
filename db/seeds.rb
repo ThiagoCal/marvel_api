@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "json"
+require "open-uri"
+
+
+publicKey = "354b64a846079737d78c7b7ab3a299ea"
+
+
+hash = "a904ee4ee86230876bf125b5355e9024"
+
+url = "https://gateway.marvel.com/v1/public/characters?events=238&limit=100&ts=1&apikey=#{publicKey}&hash=#{hash}"
+    data = URI.open(url).read
+    @characters = JSON.parse(data)
+    @characters = @characters["data"]["results"]
+    puts @characters
+    @characters.each do |element|
+      Character.create! name:  element["name"], description: element["description"], thumbnail: "#{element["thumbnail"]["path"]}.#{element["thumbnail"]["extension"]}"
+
+    end
