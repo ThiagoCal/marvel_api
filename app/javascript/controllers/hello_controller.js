@@ -28,7 +28,7 @@ export default class extends Controller {
     fetch(baseURL)
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data.data.results)
       })
   }
 }
