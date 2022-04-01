@@ -1,0 +1,24 @@
+<div class="container">
+  <form role="form" action="/">
+    <h2 class="">Finding Marvel Characters</h2>
+    <input type="text" class="form-control" placeholder="Ex: Marvel" name="keywords">
+    <br>
+    <button class="btn btn-primary btn-block" type="submit">Search</button>
+    <br>
+  </form>
+  <section class="series">
+  <div data-controller="hello">
+    <div data-target="hello.output">
+      <% if @characters.present? %>
+        <% @characters.each do |character| %>
+          <div class="col-md-12">
+            <h1><%= character.name %></h1>
+            <p><%= character.description %></p>
+            <p><a href="<%= serie.link %>">Veja mais clicando aqui</a></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+   </div>
+  </selection>
+</div>
