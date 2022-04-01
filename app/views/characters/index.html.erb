@@ -7,18 +7,18 @@
     <br>
   </form>
   <section class="series">
-  <div data-controller="hello">
-    <div data-target="hello.output">
+  <%# <div data-controller="hello">
+    <div data-hello-target="output"> %>
       <% if @characters.present? %>
         <% @characters.each do |character| %>
           <div class="col-md-12">
             <h1><%= character.name %></h1>
             <p><%= character.description %></p>
-            <p><a href="<%= serie.link %>">Veja mais clicando aqui</a></p>
+             <img src="<%= character.thumbnail %>">
           </div>
         <% end %>
       <% end %>
-    </div>
-   </div>
-  </selection>
+    <%# </div>
+   </div> %>
+  </section>
 </div>

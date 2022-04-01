@@ -12,28 +12,14 @@ require "open-uri"
 publicKey = "354b64a846079737d78c7b7ab3a299ea"
 
 
-hash = "a904ee4ee86230876bf125b5355e902"
+hash = "a904ee4ee86230876bf125b5355e9024"
 
-# url = "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=#{publicKey}&hash=#{hash}"
-#     data = URI.open(url).read
-#     @characters = JSON.parse(data)
-#     @characters = @characters.data.results
+url = "https://gateway.marvel.com/v1/public/characters?events=238&limit=100&ts=1&apikey=#{publicKey}&hash=#{hash}"
+    data = URI.open(url).read
+    @characters = JSON.parse(data)
+    @characters = @characters["data"]["results"]
+    puts @characters
+    @characters.each do |element|
+      Character.create! name:  element["name"], description: element["description"], thumbnail: "#{element["thumbnail"]["path"]}.#{element["thumbnail"]["extension"]}"
 
-#     @characters.each do |element|
-#       Character.create! name:  element["name"], description: element["description"], thumbnail: { path: ["path"], extension: ["extension"]}
-
-#     end
-
-    open("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=#{publicKey}&hash=#{hash}") do |characters|
-      data = []
-      characters.read.each_line do |character|
-        @item = JSON.parse(character)
-          object = {
-            "name":        @item["name"],
-            "description":  @item["description"],
-            "thumbnail":     @item["thumbnail"]
-          }
-          data << object
-      end
-      Character.create!(data)
     end
